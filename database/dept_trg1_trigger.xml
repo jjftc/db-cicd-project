@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext" 
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+	<changeSet id="84d96254d9e13e9211573804530f40bc7978ff15" author="(PRUEBAS)-Generated" failOnError="false"    >
+		<n0:createOracleTrigger objectName="DEPT_TRG1" objectType="TRIGGER" ownerName="PRUEBAS"   >
+			<n0:source><![CDATA[
+  CREATE OR REPLACE EDITIONABLE TRIGGER "PRUEBAS"."DEPT_TRG1" 
+    before insert on dept
+    for each row
+begin
+    if :new.deptno is null then
+        select dept_seq.nextval into :new.deptno from sys.dual;
+    end if;
+end;
+/
+ALTER TRIGGER "PRUEBAS"."DEPT_TRG1" ENABLE]]></n0:source>
+		</n0:createOracleTrigger>
+	</changeSet>
+</databaseChangeLog>
