@@ -5,8 +5,8 @@
 	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext" 
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
 	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
-	<changeSet id="28c734c6bcf2c1c128a051a44ffebeccbaa4d4ba" author="(PRUEBAS)-Generated" failOnError="false"    >
-		<n0:createSxmlObject objectName="EMP" objectType="TABLE" ownerName="PRUEBAS"   >
+	<changeSet id="b787583863a48fe8b932d16a15e49f8d5603f653" author="(PRUEBAS)-Generated" failOnError="false"    >
+		<n0:createSxmlObject objectName="EMP" objectType="table" ownerName="PRUEBAS"   >
 			<n0:source><![CDATA[
   <TABLE xmlns="http://xmlns.oracle.com/ku" version="1.0">
    <SCHEMA>PRUEBAS</SCHEMA>
@@ -56,6 +56,11 @@
             <PRECISION>2</PRECISION>
             <SCALE>0</SCALE>
          </COL_LIST_ITEM>
+         <COL_LIST_ITEM>
+            <NAME>HIREDATE</NAME>
+            <DATATYPE>TIMESTAMP</DATATYPE>
+            <SCALE>6</SCALE>
+         </COL_LIST_ITEM>
       </COL_LIST>
       <PRIMARY_KEY_CONSTRAINT_LIST>
          <PRIMARY_KEY_CONSTRAINT_LIST_ITEM>
@@ -88,6 +93,42 @@
             </USING_INDEX>
          </PRIMARY_KEY_CONSTRAINT_LIST_ITEM>
       </PRIMARY_KEY_CONSTRAINT_LIST>
+      <FOREIGN_KEY_CONSTRAINT_LIST>
+         <FOREIGN_KEY_CONSTRAINT_LIST_ITEM>
+            <NAME>EMP_MGR_FK</NAME>
+            <COL_LIST>
+               <COL_LIST_ITEM>
+                  <NAME>MGR</NAME>
+               </COL_LIST_ITEM>
+            </COL_LIST>
+            <REFERENCES>
+               <SCHEMA>PRUEBAS</SCHEMA>
+               <NAME>EMP</NAME>
+               <COL_LIST>
+                  <COL_LIST_ITEM>
+                     <NAME>EMPNO</NAME>
+                  </COL_LIST_ITEM>
+               </COL_LIST>
+            </REFERENCES>
+         </FOREIGN_KEY_CONSTRAINT_LIST_ITEM>
+         <FOREIGN_KEY_CONSTRAINT_LIST_ITEM>
+            <NAME>EMP_DEPT_FK</NAME>
+            <COL_LIST>
+               <COL_LIST_ITEM>
+                  <NAME>DEPTNO</NAME>
+               </COL_LIST_ITEM>
+            </COL_LIST>
+            <REFERENCES>
+               <SCHEMA>PRUEBAS</SCHEMA>
+               <NAME>DEPT</NAME>
+               <COL_LIST>
+                  <COL_LIST_ITEM>
+                     <NAME>DEPTNO</NAME>
+                  </COL_LIST_ITEM>
+               </COL_LIST>
+            </REFERENCES>
+         </FOREIGN_KEY_CONSTRAINT_LIST_ITEM>
+      </FOREIGN_KEY_CONSTRAINT_LIST>
       <DEFAULT_COLLATION>USING_NLS_COMP</DEFAULT_COLLATION>
       <PHYSICAL_PROPERTIES>
          <HEAP_TABLE>
